@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Live haze (PSI) by region for Singapore from NEA, plus weather for Singapore and ASEAN capitals.">
+<title>Haze Monitor</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<div class="wrap">
+
+<header class="bar">
+  <div class="brand">
+    <svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="var(--ink)"/><circle cx="14" cy="14" r="5" fill="none" stroke="var(--ink-fg)" stroke-width="2"/><path d="M14 4v3M14 21v3M4 14h3M21 14h3" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>
+    Haze Monitor
+  </div>
+  <nav class="nav" aria-label="Sections"><a href="#sg">Singapore</a><a href="#past">Past day</a><a href="#asean">ASEAN</a></nav>
+  <div class="bar-r">
+    <span class="pill" id="pill"><span class="dot"></span><span id="pillText">Loading…</span></span>
+    <button class="btn" id="refresh" type="button">Refresh</button>
+  </div>
+</header>
+
+<div class="intro">
+  <h1>Singapore haze and weather</h1>
+  <p>Regional PSI from NEA on data.gov.sg, with weather from Open-Meteo for Singapore and ASEAN capitals.</p>
+</div>
+
+<section id="sg" class="kgrid" aria-label="Singapore by region">
+  <div class="left">
+    <div class="tabs" id="chips" role="group" aria-label="Region"></div>
+    <div class="sechead"><h2>Haze</h2><span class="src">NEA on data.gov.sg</span></div>
+    <div class="panel" id="hazeBox" aria-live="polite"></div>
+    <div class="panel tips" id="hazeTips"></div>
+    <div class="sechead"><h2>Weather</h2><span class="src">Open-Meteo</span></div>
+    <div class="panel" id="wxBox"></div>
+    <div class="panel tips" id="wxTips"></div>
+  </div>
+  <div class="right">
+    <div class="mapwrap">
+      <div class="float"><span class="a">24-hour PSI by area</span><span class="b" id="mapTime"></span></div>
+      <svg class="map" id="map" viewBox="0 0 870 600" role="img" aria-label="Map of Singapore split into north, south, east, west and central areas, coloured by 24-hour PSI"></svg>
+    </div>
+    <div class="legend" id="legend"></div>
+    <p class="map-note" id="mapnote"></p>
+  </div>
+</section>
+
+<section id="past" aria-labelledby="olH">
+  <div class="sechead"><h2 id="olH">PM2.5 over the past day</h2><span class="src" id="olSub">NEA on data.gov.sg</span></div>
+  <div class="card" id="outlook"><p class="empty">Loading…</p></div>
+</section>
+
+<section id="asean" aria-labelledby="cH">
+  <div class="sechead"><h2 id="cH">ASEAN capitals</h2><span class="src">Weather from Open-Meteo. Haze data from data.gov.sg covers Singapore only.</span></div>
+  <div class="grid" id="cities"></div>
+</section>
+
+<footer>
+  <span>Haze data: <a href="https://data.gov.sg/collections/2278/view">NEA PSI and PM2.5 on data.gov.sg</a>. Weather: <a href="https://open-meteo.com/">Open-Meteo</a>.</span>
+  <span>Health guidance here is general. Follow NEA advisories for official advice.</span>
+</footer>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
